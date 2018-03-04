@@ -32,6 +32,8 @@ var MONALISA_STATE = (function()
 			fakeImage = GAME.add.sprite(0, 0, 'monalisa-orginal');
 			fakeImageMask = GAME.add.graphics(0, 0);
 			fakeImageMask.beginFill(0xffffff);
+			fakeImageMask.drawRect(0,0,800,600);
+			fakeImageMask.beginFill(0x000000);
 			fakeImage.mask = fakeImageMask;
 			
 			TRACKER = new tracking.ColorTracker('red');
