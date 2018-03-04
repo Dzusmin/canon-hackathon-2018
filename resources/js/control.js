@@ -56,6 +56,12 @@ window.onload = function()
 					GAME.state.start('MONALISA_STATE');
 					break;
 				}
+				if(GAME_STATUS == STATUS.MONALISA)
+				{
+					MONALISA_STATE.dispose();
+					GAME.state.start('LAST_STATE');
+					break;
+				}
 				break;
 			default:
 				console.log(keyEvent.which);
