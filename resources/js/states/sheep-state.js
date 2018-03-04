@@ -60,6 +60,8 @@ var SHEEP_STATE = (function()
 		
 		update: function()
 		{
+			playerPointer.x = pointerPosition.x;
+			playerPointer.y = pointerPosition.y;
 			if(true) // sheep widzi pointerPosition
 			{
 				GAME.physics.arcade.moveToXY(sheep, pointerPosition.x, pointerPosition.y, 60, 400);
