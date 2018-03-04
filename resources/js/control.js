@@ -37,12 +37,18 @@ window.onload = function()
 						alert('Skala jest poza skalą');
 						break;
 					}
-					//
+					
 					VIDEO.setAttribute('style', 'top: 600px;');
 					CANVAS.setAttribute('style', 'top: 600px;');
 					BOARD_SETUP_STATE.dispose();
-					//
+					
+					GAME.state.start('CANON_STATE');
+					break;
+				}
+				if(GAME_STATUS == STATUS.CANON)
+				{
 					GAME.state.start('SHEEP_STATE');
+					break;
 				}
 				break;
 			default:

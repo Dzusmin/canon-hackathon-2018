@@ -21,6 +21,8 @@ var SHEEP_STATE = (function()
 		
 		create: function()
 		{
+			GAME_STATUS = STATUS.SHEEP;
+			
 			GAME.stage.backgroundColor = '#FFFFFF';
 			//GAME.add.sprite(0, 0, 'background-template');
 			
@@ -99,15 +101,7 @@ var SHEEP_STATE = (function()
 			for(var i = 0; i < sheep.length; i++)
 			{
 				var sheepObj = sheep[i];
-				var angleDeg = Math.atan2(sheepObj.y - playerPointer.y, sheepObj.x - playerPointer.x) * 180 / Math.PI;
-				if(angleDeg > -6 && angleDeg < 6)
-				{
-					GAME.physics.arcade.moveToXY(sheepObj, pointerPosition.x, pointerPosition.y, 50, 600);
-				}
-				else
-				{
-					sheepObj.body.angle += 5;
-				}
+				GAME.physics.arcade.moveToXY(sheepObj, pointerPosition.x, pointerPosition.y, 50, 600);
 			}
 		},
 		

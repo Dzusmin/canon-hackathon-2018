@@ -18,7 +18,6 @@ var BOOT_STATE = (function()
 			GAME.renderer.renderSession.roundPixels = true;
 			GAME.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
 			
-			GAME_STATUS = STATUS.INITIALIZED;
 			GAME.state.start('BOARD_SETUP_STATE');
 		}
 	};

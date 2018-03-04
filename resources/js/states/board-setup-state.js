@@ -21,6 +21,8 @@ var BOARD_SETUP_STATE = (function()
 					GAME_BOARD = rect;
 				});				
 			});
+			
+			GAME_STATUS = STATUS.INITIALIZED;
 		}
 	};
 	

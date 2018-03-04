@@ -3,7 +3,9 @@ var GAME = new Phaser.Game(800, 600, Phaser.AUTO, 'gameDiv');
 var STATUS =
 {
 	UNINITIALIZED: 0,
-	INITIALIZED: 1
+	INITIALIZED: 1,
+	CANON: 2,
+	SHEEP: 3
 };
 var GAME_STATUS = STATUS.UNINITIALIZED;
 
