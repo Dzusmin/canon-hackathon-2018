@@ -33,8 +33,8 @@ var MONALISA_STATE = (function()
 			playerPointer.kinematic = true;
 			
 			fakeImage = GAME.add.sprite(0, 0, 'monalisa-orginal');
-			fakeImageMask = Game.add.graphics(0, 0);
-			fakeImageMask.beginFill(0xFFFFFF);
+			fakeImageMask = GAME.add.graphics(0, 0);
+			fakeImageMask.beginFill(0xffffff);
 			fakeImageMask.drawCircle(100, 100, 100);
 			fakeImage.mask = fakeImageMask;
 			//bitmapMask = GAME.make.bitmapData(800, 600);
