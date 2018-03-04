@@ -14,23 +14,34 @@ var LAST_STATE = (function()
 	{
 		preload: function()
 		{
+				GAME.load.image('roz', 'resources/assets/2d/ROZ.png');
+				GAME.load.image('ziel', 'resources/assets/2d/ZIEL.png');
+				GAME.load.image('nieb', 'resources/assets/2d/NIEB.png');
+				GAME.load.image('fiol', 'resources/assets/2d/FIOL.png');
 		},
 
 		create: function()
 		{
-			GAME_STATUS = STATUS.LAST;
+			GAME_STATUS = STATUS.SHEEP;
 
 			GAME.stage.backgroundColor = '#FFFFFF';
-			//GAME.add.sprite(0, 0, 'sheep-background');
 
 			GAME.physics.startSystem(Phaser.Physics.BOX2D);
-			GAME.physics.box2d.gravity.y = 100;
 			GAME.physics.box2d.setBoundsToWorld();
+			GAME.physics.box2d.gravity.y = 200;
 
 			playerPointer = new Phaser.Physics.Box2D.Body(GAME, null, 10, 10);
 			playerPointer.setCircle(20);
 			playerPointer.kinematic = true;
 
+			for(var i = 0; i < 10; i++)
+			{
+				var ballon = GAME.add.sprite(GAME.world.randomX, GAME.world.randomY, 'ziel');
+				ballon.anchor.setTo(0.5);
+				GAME.physics.box2d.enable(ballon);
+				ballon.body.setCircle(40);
+			}
+			
 			TRACKER = new tracking.ColorTracker('red');
 			TRACKING_TRACK = tracking.track('#video', TRACKER, { camera: true });
 			TRACKER.on('track', function(event)
@@ -56,7 +67,8 @@ var LAST_STATE = (function()
 
 		render: function()
 		{
-			GAME.debug.box2dWorld();
+			// GAME.debug.box2dWorld();
+			// bmpText = GAME.add.bitmapText(10, 10, 'carrier_command', startSheepAmount + '/' + startSheepAmount,34);
 			GAME.debug.text('FPS: ' + (GAME.time.fps || 'FPS: --'), 10, 20, '#00FF00');
 
 		}
