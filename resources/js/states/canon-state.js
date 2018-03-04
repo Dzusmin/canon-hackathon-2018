@@ -15,7 +15,7 @@ var CANON_STATE = (function()
 		{
 			GAME_STATUS = STATUS.CANON;
 			
-			GAME.stage.backgroundColor = '#000000';
+			GAME.stage.backgroundColor = '#fff';
 			
 			GAME.physics.startSystem(Phaser.Physics.BOX2D);
 			GAME.physics.box2d.gravity.y = 400;
@@ -54,11 +54,21 @@ var CANON_STATE = (function()
 		
 		update: function()
 		{
+			logos.forEach(function(logo, index) {
+				if (logo.y > 650){
+					logo.destroy();
+					logos.splice(index, 1);
+
+          var canonLogo = GAME.add.sprite(GAME.world.randomX, -40, 'canon-logo');
+          GAME.physics.box2d.enable(canonLogo);
+          logos.push(canonLogo);
+				}
+      });
 		},
 		
 		render: function()
 		{
-			GAME.debug.box2dWorld();
+			// GAME.debug.box2dWorld();
 			GAME.debug.text('FPS: ' + (GAME.time.fps || 'FPS: --'), 10, 20, '#00FF00');
 		}
 	};
