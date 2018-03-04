@@ -15,7 +15,7 @@ var SHEEP_STATE = (function()
 	{
 		preload: function()
 		{
-			GAME.load.image('background-template', 'resources/assets/2d/background-template.png');
+			GAME.load.image('sheep-background', 'resources/assets/2d/sheep-background.png');
 			GAME.load.image('sheep', 'resources/assets/2d/sheep.png');
 		},
 		
@@ -24,7 +24,7 @@ var SHEEP_STATE = (function()
 			GAME_STATUS = STATUS.SHEEP;
 			
 			GAME.stage.backgroundColor = '#FFFFFF';
-			//GAME.add.sprite(0, 0, 'background-template');
+			GAME.add.sprite(0, 0, 'sheep-background');
 			
 			GAME.physics.startSystem(Phaser.Physics.BOX2D);
 			GAME.physics.box2d.setBoundsToWorld();
