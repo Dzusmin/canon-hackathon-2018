@@ -16,6 +16,7 @@ var SHEEP_STATE = (function()
 		preload: function()
 		{
 			GAME.load.image('background-template', 'resources/assets/2d/background-template.png');
+			GAME.load.image('sheep', 'resources/assets/2d/sheep.png');
 		},
 		
 		create: function()
@@ -32,13 +33,13 @@ var SHEEP_STATE = (function()
 			staticCollisions.body.static = true;
 			staticCollisions.body.clearFixtures();
 			
-			staticCollisions.body.addEdge(399, 233, 534, 110);
+			staticCollisions.body.addEdge(399, 237, 534, 110);
 			staticCollisions.body.addEdge(534, 110, 596, 157);
 			staticCollisions.body.addEdge(596, 157, 577, 207);
-			staticCollisions.body.addEdge(577, 207, 630, 290);
-			staticCollisions.body.addEdge(630, 290, 578, 383);
+			staticCollisions.body.addEdge(577, 207, 634, 290);
+			staticCollisions.body.addEdge(634, 290, 578, 383);
 			staticCollisions.body.addEdge(578, 383, 457, 363);
-			staticCollisions.body.addEdge(457, 363, 399, 233);
+			staticCollisions.body.addEdge(457, 363, 399, 237);
 			
 			staticCollisions.body.addEdge(581, 600, 689, 506);
 			staticCollisions.body.addEdge(689, 506, 800, 523);
@@ -46,13 +47,14 @@ var SHEEP_STATE = (function()
 			staticCollisions.body.addEdge(0, 330, 115, 307);
 			staticCollisions.body.addEdge(115, 307, 197, 439);
 			staticCollisions.body.addEdge(197, 439, 321, 473);
-			staticCollisions.body.addEdge(321, 473, 358, 600);
+			staticCollisions.body.addEdge(321, 473, 363, 600);
 			//
 			
 			// owce
 			for(var i = 0; i < 5; i++)
 			{
 				var tmpSheep = GAME.add.sprite(GAME.world.randomX, GAME.world.randomY);
+				tmpSheep.anchor.setTo(0.5);
 				GAME.physics.box2d.enable(tmpSheep);
 				tmpSheep.body.setCircle(30);
 				sheep.push(tmpSheep);
