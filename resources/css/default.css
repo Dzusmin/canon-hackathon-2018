@@ -1,0 +1,13 @@
+body
+{
+	background-color: #FF00FF;
+	padding: 0;
+	margin: 0;
+}
+
+#video, #canvas
+{
+	left: 120px;
+	top: 30px;
+	position: fixed;
+}

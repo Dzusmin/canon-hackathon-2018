@@ -1,0 +1,29 @@
+<!doctype html> 
+<html> 
+	<head> 
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="resources/css/default.css" />
+		<script type="text/javascript" src="resources/libs/phaser.io/phaser.min.js"></script>
+		<script type="text/javascript" src="resources/libs/box2d/box2d-plugin-full.js"></script>
+		<script type="text/javascript" src="resources/libs/tracking.js/tracking-min.js"></script>
+		
+		<script type="text/javascript" src="resources/js/core.js"></script>
+		<script type="text/javascript" src="resources/js/control.js"></script>
+		<script type="text/javascript" src="resources/js/states/boot-state.js"></script>
+		<script type="text/javascript" src="resources/js/states/board-setup-state.js"></script>
+		<script type="text/javascript" src="resources/js/states/sheep-state.js"></script>
+	</head>
+	<body>
+		<div id="gameDiv"></div>
+		<video id="video" width="800" height="600"></video>
+		<canvas id="canvas" width="800" height="600"></canvas>
+		
+		<script type="text/javascript">
+			tracking.ColorTracker.registerColor('nowy-kolorek', function(r,g,b)
+			{
+				return (r < 60 && g > 70 && b > 70);
+			});
+			GAME.state.start('BOOT_STATE');
+		</script>
+	</body>
+</html>
