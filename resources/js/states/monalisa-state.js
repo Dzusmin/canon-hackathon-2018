@@ -67,6 +67,8 @@ var MONALISA_STATE = (function()
 		
 		update: function()
 		{
+			playerPointer.x = pointerPosition.x;
+			playerPointer.y = pointerPosition.y;
 			fakeImageMask.x = pointerPosition.x;
 			fakeImageMask.y = pointerPosition.y;
 			/*
@@ -80,7 +82,7 @@ var MONALISA_STATE = (function()
 		
 		render: function()
 		{
-			//GAME.debug.box2dWorld();
+			GAME.debug.box2dWorld();
 			GAME.debug.text('FPS: ' + (GAME.time.fps || 'FPS: --'), 10, 20, '#00FF00');
 		}
 	};
