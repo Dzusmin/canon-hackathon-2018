@@ -66,7 +66,7 @@ var MONALISA_STATE = (function()
 			playerPointer.y = pointerPosition.y;
 			fakeImageMask.drawCircle(playerPointer.x, playerPointer.y, 40);
 			fakeImageMask.update();
-			//fakeImage.mask = fakeImageMask;
+			fakeImage.mask = fakeImageMask;
 		},
 		
 		render: function()
