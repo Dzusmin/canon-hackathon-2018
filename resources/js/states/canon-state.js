@@ -46,7 +46,7 @@ var CANON_STATE = (function()
 			// canon logo
 			for(var i = 0; i < 5; i++)
 			{
-				var canonLogo = GAME.add.sprite(GAME.world.randomX, -40, 'canon-logo');
+				var canonLogo = GAME.add.sprite(GAME.world.randomX, -40*(i+1), 'canon-logo');
 				GAME.physics.box2d.enable(canonLogo);
 				logos.push(canonLogo);
 			}
@@ -54,14 +54,6 @@ var CANON_STATE = (function()
 		
 		update: function()
 		{
-			for(var i = 0; i < logos.length; i++)
-			{
-				if(logos[i].y > 800)
-				{
-					logos[i].x = GAME.world.randomX;
-					logos[i].y = -40;
-				}
-			}
 		},
 		
 		render: function()

@@ -27,7 +27,7 @@ var SHEEP_STATE = (function()
 			GAME.add.sprite(0, 0, 'sheep-background');
 			
 			GAME.physics.startSystem(Phaser.Physics.BOX2D);
-			GAME.physics.box2d.setBoundsToWorld();
+			//GAME.physics.box2d.setBoundsToWorld();
 			
 			// kolizje statyczne
 			var staticCollisions = GAME.add.sprite(0,0);
@@ -60,7 +60,6 @@ var SHEEP_STATE = (function()
 				
 				GAME.physics.box2d.enable(tmpSheep);
 				tmpSheep.body.setCircle(23);
-				tmpSheep.body.fixedRotation = true;
 				
 				sheep.push(tmpSheep);
 			}
@@ -92,6 +91,17 @@ var SHEEP_STATE = (function()
 					else if(pointerPosition.y > 800) pointerPosition.y = 800;
 				});				
 			});
+			
+			GAME.time.events.add(Phaser.Timer.SECOND * 4, function()
+			{
+				var sheepObj = GAME.add.sprite(400, 650, 'sheep');
+				sheepObj.anchor.setTo(0.5);
+				
+				GAME.physics.box2d.enable(sheepObj);
+				sheepObj.body.setCircle(23);
+				
+				sheep.push(sheepObj);
+			}, this);
 		},
 		
 		update: function()
