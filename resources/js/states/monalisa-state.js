@@ -71,7 +71,7 @@ var MONALISA_STATE = (function()
 		
 		render: function()
 		{
-			GAME.debug.box2dWorld();
+			// GAME.debug.box2dWorld();
 			GAME.debug.text('FPS: ' + (GAME.time.fps || 'FPS: --'), 10, 20, '#00FF00');
 		}
 	};

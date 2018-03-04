@@ -115,7 +115,7 @@ var SHEEP_STATE = (function()
 
 		render: function()
 		{
-			GAME.debug.box2dWorld();
+			// GAME.debug.box2dWorld();
 			// bmpText = GAME.add.bitmapText(10, 10, 'carrier_command', startSheepAmount + '/' + startSheepAmount,34);
 			GAME.debug.text('FPS: ' + (GAME.time.fps || 'FPS: --'), 10, 20, '#00FF00');
 
