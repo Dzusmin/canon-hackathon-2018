@@ -8,7 +8,7 @@ var SHEEP_STATE = (function()
 		y: 0
 	};
 	
-	var sheep = null;
+	var sheep = [];
 	var playerPointer = null;
 	//
 	STATE.prototype =
@@ -21,14 +21,42 @@ var SHEEP_STATE = (function()
 		create: function()
 		{
 			GAME.stage.backgroundColor = '#FFFFFF';
-			GAME.add.sprite(0, 0, 'background-template');
+			//GAME.add.sprite(0, 0, 'background-template');
 			
 			GAME.physics.startSystem(Phaser.Physics.BOX2D);
 			GAME.physics.box2d.setBoundsToWorld();
 			
-			sheep = GAME.add.sprite(50, 50);
-			GAME.physics.box2d.enable(sheep);
-			sheep.body.setCircle(30);
+			// kolizje statyczne
+			var staticCollisions = GAME.add.sprite(0,0);
+			GAME.physics.box2d.enable(staticCollisions);
+			staticCollisions.body.static = true;
+			staticCollisions.body.clearFixtures();
+			
+			staticCollisions.body.addEdge(399, 233, 534, 110);
+			staticCollisions.body.addEdge(534, 110, 596, 157);
+			staticCollisions.body.addEdge(596, 157, 577, 207);
+			staticCollisions.body.addEdge(577, 207, 630, 290);
+			staticCollisions.body.addEdge(630, 290, 578, 383);
+			staticCollisions.body.addEdge(578, 383, 457, 363);
+			staticCollisions.body.addEdge(457, 363, 399, 233);
+			
+			staticCollisions.body.addEdge(581, 600, 689, 506);
+			staticCollisions.body.addEdge(689, 506, 800, 523);
+			
+			staticCollisions.body.addEdge(0, 330, 115, 307);
+			staticCollisions.body.addEdge(115, 307, 197, 439);
+			staticCollisions.body.addEdge(197, 439, 321, 473);
+			staticCollisions.body.addEdge(321, 473, 358, 600);
+			//
+			
+			// owce
+			for(var i = 0; i < 5; i++)
+			{
+				var tmpSheep = GAME.add.sprite(GAME.world.randomX, GAME.world.randomY);
+				GAME.physics.box2d.enable(tmpSheep);
+				tmpSheep.body.setCircle(30);
+			}
+			//
 			
 			playerPointer = new Phaser.Physics.Box2D.Body(GAME, null, 10, 10);
 			playerPointer.setCircle(20);
@@ -62,9 +90,12 @@ var SHEEP_STATE = (function()
 		{
 			playerPointer.x = pointerPosition.x;
 			playerPointer.y = pointerPosition.y;
-			if(true) // sheep widzi pointerPosition
+			for(var i = 0; i < sheep.length; i++)
 			{
-				GAME.physics.arcade.moveToXY(sheep, pointerPosition.x, pointerPosition.y, 60, 400);
+				if(true) // sheep widzi pointerPosition
+				{
+					GAME.physics.arcade.moveToXY(sheep[i], pointerPosition.x, pointerPosition.y, 60, 400);
+				}	
 			}
 		},
 		
