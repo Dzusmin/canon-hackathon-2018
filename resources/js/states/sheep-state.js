@@ -23,6 +23,7 @@ var SHEEP_STATE = (function()
 		{
 			GAME.load.image('sheep-background', 'resources/assets/2d/sheep-background.png');
 			GAME.load.image('sheep', 'resources/assets/2d/sheep.png');
+			GAME.load.image('dead_sheep', 'resources/assets/2d/dead_sheep.png');
 			GAME.load.image('wolf', 'resources/assets/2d/wolf.png');
 		},
 
@@ -135,7 +136,7 @@ var SHEEP_STATE = (function()
 			if(!begin){
 				return;
 			}
-      body2.sprite.loadTexture('wolf', 0);
+      body2.sprite.loadTexture('dead_sheep', 0);
       body2.destroy();
     }
 	};
