@@ -8,7 +8,7 @@ var SHEEP_STATE = (function()
 		y: 0
 	};
 
-	var sheep = [];
+	// var sheep = [];
 	var sheepGroup = null;
 	var playerPointer = null;
 	var wolf = null;
@@ -23,6 +23,7 @@ var SHEEP_STATE = (function()
 		{
 			GAME.load.image('sheep-background', 'resources/assets/2d/sheep-background.png');
 			GAME.load.image('sheep', 'resources/assets/2d/sheep.png');
+			GAME.load.image('wolf', 'resources/assets/2d/wolf.png');
 		},
 
 		create: function()
@@ -69,14 +70,8 @@ var SHEEP_STATE = (function()
 				tmpSheep.body.setCircle(23);
 				tmpSheep.body.setCollisionCategory(2);
 				sheepGroup.add(tmpSheep);
-				sheep.push(tmpSheep);
+				// sheep.push(tmpSheep);
 			}
-      wolf = new Phaser.Physics.Box2D.Body(GAME, null, 200, 200);
-      wolf.setCircle(23);
-      wolf.kinematic = true;
-      wolf.sensor = true;
-
-      wolf.setCategoryContactCallback(2, this.woolfVsSheepCollisionHandler, this);
 
 			playerPointer = new Phaser.Physics.Box2D.Body(GAME, null, 10, 10);
 			playerPointer.setCircle(20);
@@ -112,13 +107,10 @@ var SHEEP_STATE = (function()
 		  // bmpText.text = startSheepAmount + '/' + sheep.length;
 			playerPointer.x = pointerPosition.x;
 			playerPointer.y = pointerPosition.y;
-			for(var i = 0; i < sheep.length; i++)
-			{
-				var sheepObj = sheep[i];
-				GAME.physics.arcade.moveToXY(sheepObj, pointerPosition.x, pointerPosition.y, 50, 600);
-			}
-			// GAME.physics.arcade.overlap(sheep, wolf, this.woolfVsSheepCollisionHandler(), null, this);
-
+      sheepGroup.forEach(function (sheepObj) {
+        GAME.physics.arcade.moveToXY(sheepObj, pointerPosition.x, pointerPosition.y, 50, 600);
+      });
+			// GAME.physics.arcade.overlap(sheepGroup, wolf, this.woolfVsSheepCollisionHandler, null, this);
 		},
 
 		render: function()
@@ -130,14 +122,21 @@ var SHEEP_STATE = (function()
 		},
 
     fadeWolf: function () {
+      var wolf = GAME.add.sprite(200, 200, 'wolf');
+      wolf.anchor.setTo(0.5);
 
+      GAME.physics.box2d.enable(wolf);
+      wolf.body.setCircle(23);
+
+      wolf.body.setCategoryContactCallback(2, this.woolfVsSheepCollisionHandler, this);
     },
 
     woolfVsSheepCollisionHandler: function(body1, body2, f1, f2, begin) {
 			if(!begin){
 				return;
 			}
-			// body2.kill();
+      body2.sprite.loadTexture('wolf', 0);
+      body2.destroy();
     }
 	};
 
