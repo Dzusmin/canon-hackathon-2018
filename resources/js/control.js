@@ -22,19 +22,25 @@ window.onload = function()
 				{
 					if(GAME_BOARD == null)
 					{
-						console.log('Nie wykryto ekranu');
+						alert('Nie wykryto ekranu gry');
+						break;
+					}
+					
+					SCALE_FIX =
+					{
+						x: 800 / GAME_BOARD.width,
+						y: 600 / GAME_BOARD.height
+					};
+					
+					if(SCALE_FIX.x > 1.7 || SCALE_FIX.y > 1.7)
+					{
+						alert('Skala jest poza skalą');
 						break;
 					}
 					//
 					VIDEO.setAttribute('style', 'top: 600px;');
 					CANVAS.setAttribute('style', 'top: 600px;');
 					BOARD_SETUP_STATE.dispose();
-					//
-					SCALE_FIX =
-					{
-						x: 800 / GAME_BOARD.width,
-						y: 600 / GAME_BOARD.height
-					};
 					//
 					GAME.state.start('SHEEP_STATE');
 				}
