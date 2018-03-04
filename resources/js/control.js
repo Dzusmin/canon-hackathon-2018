@@ -50,6 +50,12 @@ window.onload = function()
 					GAME.state.start('SHEEP_STATE');
 					break;
 				}
+				if(GAME_STATUS == STATUS.SHEEP)
+				{
+					SHEEP_STATE.dispose();
+					GAME.state.start('MONALISA_STATE');
+					break;
+				}
 				break;
 			default:
 				console.log(keyEvent.which);

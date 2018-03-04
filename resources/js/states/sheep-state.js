@@ -27,7 +27,7 @@ var SHEEP_STATE = (function()
 			GAME.add.sprite(0, 0, 'sheep-background');
 			
 			GAME.physics.startSystem(Phaser.Physics.BOX2D);
-			//GAME.physics.box2d.setBoundsToWorld();
+			GAME.physics.box2d.setBoundsToWorld();
 			
 			// kolizje statyczne
 			var staticCollisions = GAME.add.sprite(0,0);
@@ -53,7 +53,7 @@ var SHEEP_STATE = (function()
 			//
 			
 			// owce
-			for(var i = 0; i < 5; i++)
+			for(var i = 0; i < 50; i++)
 			{
 				var tmpSheep = GAME.add.sprite(GAME.world.randomX, GAME.world.randomY, 'sheep');
 				tmpSheep.anchor.setTo(0.5);
@@ -91,17 +91,6 @@ var SHEEP_STATE = (function()
 					else if(pointerPosition.y > 800) pointerPosition.y = 800;
 				});				
 			});
-			
-			GAME.time.events.add(Phaser.Timer.SECOND * 4, function()
-			{
-				var sheepObj = GAME.add.sprite(400, 650, 'sheep');
-				sheepObj.anchor.setTo(0.5);
-				
-				GAME.physics.box2d.enable(sheepObj);
-				sheepObj.body.setCircle(23);
-				
-				sheep.push(sheepObj);
-			}, this);
 		},
 		
 		update: function()
