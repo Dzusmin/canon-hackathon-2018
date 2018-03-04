@@ -53,14 +53,13 @@ window.onload = function()
 				if(GAME_STATUS == STATUS.SHEEP)
 				{
 					SHEEP_STATE.dispose();
-					GAME.state.start('MONALISA_STATE');
+					GAME.state.start('LAST_STATE');
 					break;
 				}
-				if(GAME_STATUS == STATUS.MONALISA)
+				if(GAME_STATUS == STATUS.LAST)
 				{
-
-					MONALISA_STATE.dispose();
-					GAME.state.start('LAST_STATE');
+					LAST_STATE.dispose();
+					GAME.state.start('MONALISA_STATE');
 					break;
 				}
 				break;
