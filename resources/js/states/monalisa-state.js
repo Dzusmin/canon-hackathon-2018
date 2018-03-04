@@ -8,11 +8,16 @@ var MONALISA_STATE = (function()
 		y: 0
 	};
 	var playerPointer = null;
+	
+	var bitmapMask = null;
+	var fixedImage = null;
 	//
 	STATE.prototype =
 	{
 		preload: function()
 		{
+			GAME.load.image('monalisa-orginal', 'resources/assets/2d/monalisa-orginal.png');
+			GAME.load.image('monalisa-fake', 'resources/assets/2d/monalisa-fake.png');
 		},
 		
 		create: function()
@@ -20,10 +25,15 @@ var MONALISA_STATE = (function()
 			GAME_STATUS = STATUS.MONALISA;
 			
 			GAME.stage.backgroundColor = '#FFFFFF';
+			GAME.add.sprite(0, 0, 'monalisa-fake');
 			
 			playerPointer = new Phaser.Physics.Box2D.Body(GAME, null, 10, 10);
 			playerPointer.setCircle(20);
 			playerPointer.kinematic = true;
+			
+			bitmapMask = GAME.make.bitmapData(800, 600);
+			fixedImage = GAME.make.bitmapData(800, 600);
+			GAME.add.image(0, 0, fixedImage);
 			
 			TRACKER = new tracking.ColorTracker('red');
 			TRACKING_TRACK = tracking.track('#video', TRACKER, { camera: true });
@@ -51,6 +61,11 @@ var MONALISA_STATE = (function()
 		
 		update: function()
 		{
+			bitmapMask.circle(pointerPosition.x, pointerPosition.y, 20);
+			bitmapMask.update();
+			fixedImage.clear();
+			fixedImage.alphaMask('monalisa-fake', bitmapMask);
+			fixedImage.update();
 		},
 		
 		render: function()
