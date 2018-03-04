@@ -55,8 +55,11 @@ var SHEEP_STATE = (function()
 			{
 				var tmpSheep = GAME.add.sprite(GAME.world.randomX, GAME.world.randomY, 'sheep');
 				tmpSheep.anchor.setTo(0.5);
+				
 				GAME.physics.box2d.enable(tmpSheep);
-				tmpSheep.body.setCircle(30);
+				tmpSheep.body.setCircle(23);
+				tmpSheep.body.fixedRotation = true;
+				
 				sheep.push(tmpSheep);
 			}
 			//
@@ -95,10 +98,16 @@ var SHEEP_STATE = (function()
 			playerPointer.y = pointerPosition.y;
 			for(var i = 0; i < sheep.length; i++)
 			{
-				if(true) // sheep widzi pointerPosition
+				var sheepObj = sheep[i];
+				var angleDeg = Math.atan2(sheepObj.y - playerPointer.y, sheepObj.x - playerPointer.x) * 180 / Math.PI;
+				if(angleDeg > -6 && angleDeg < 6)
 				{
-					GAME.physics.arcade.moveToXY(sheep[i], pointerPosition.x, pointerPosition.y, 60, 400);
-				}	
+					GAME.physics.arcade.moveToXY(sheepObj, pointerPosition.x, pointerPosition.y, 50, 600);
+				}
+				else
+				{
+					sheepObj.body.angle += 5;
+				}
 			}
 		},
 		
