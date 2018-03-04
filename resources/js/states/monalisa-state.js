@@ -23,17 +23,15 @@ var MONALISA_STATE = (function()
 			GAME_STATUS = STATUS.MONALISA;
 			
 			GAME.stage.backgroundColor = '#FFFFFF';
-			GAME.add.sprite(0, 0, 'monalisa-fake');
+			GAME.add.sprite(0, 0, 'monalisa-orginal');
 			
 			playerPointer = new Phaser.Physics.Box2D.Body(GAME, null, 10, 10);
 			playerPointer.setCircle(20);
 			playerPointer.kinematic = true;
 			
-			fakeImage = GAME.add.sprite(0, 0, 'monalisa-orginal');
+			fakeImage = GAME.add.sprite(0, 0, 'monalisa-fake');
 			fakeImageMask = GAME.add.graphics(0, 0);
 			fakeImageMask.beginFill(0xffffff);
-			fakeImageMask.drawRect(0,0,800,600);
-			fakeImageMask.beginFill(0x000000);
 			fakeImage.mask = fakeImageMask;
 			
 			TRACKER = new tracking.ColorTracker('red');
