@@ -53,7 +53,7 @@ var SHEEP_STATE = (function()
 			// owce
 			for(var i = 0; i < 5; i++)
 			{
-				var tmpSheep = GAME.add.sprite(GAME.world.randomX, GAME.world.randomY);
+				var tmpSheep = GAME.add.sprite(GAME.world.randomX, GAME.world.randomY, 'sheep');
 				tmpSheep.anchor.setTo(0.5);
 				GAME.physics.box2d.enable(tmpSheep);
 				tmpSheep.body.setCircle(30);
@@ -104,7 +104,7 @@ var SHEEP_STATE = (function()
 		
 		render: function()
 		{
-			GAME.debug.box2dWorld();
+			//GAME.debug.box2dWorld();
 			GAME.debug.text('FPS: ' + (GAME.time.fps || 'FPS: --'), 10, 20, '#00FF00');
 		}
 	};
