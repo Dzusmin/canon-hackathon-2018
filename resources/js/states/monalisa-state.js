@@ -10,9 +10,6 @@ var MONALISA_STATE = (function()
 	var playerPointer = null;
 	var fakeImage = null;
 	var fakeImageMask = null;
-	//var bitmapMask = null;
-	//var fixedImage = null;
-	//
 	STATE.prototype =
 	{
 		preload: function()
@@ -35,7 +32,6 @@ var MONALISA_STATE = (function()
 			fakeImage = GAME.add.sprite(0, 0, 'monalisa-orginal');
 			fakeImageMask = GAME.add.graphics(0, 0);
 			fakeImageMask.beginFill(0xffffff);
-			//fakeImageMask.drawCircle(100, 100, 100);
 			fakeImage.mask = fakeImageMask;
 			
 			TRACKER = new tracking.ColorTracker('red');
@@ -45,12 +41,14 @@ var MONALISA_STATE = (function()
 				CANVAS_CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
 				event.data.forEach(function(rect)
 				{
+					/*
 					if (rect.color === 'custom')
 					{
 						rect.color = TRACKER.customColor;
 					}
 					CANVAS_CONTEXT.strokeStyle = rect.color;
 					CANVAS_CONTEXT.strokeRect(rect.x, rect.y, rect.width, rect.height);
+					*/
 					
 					pointerPosition.x = (rect.x * SCALE_FIX.x) + ((rect.width * SCALE_FIX.x) / 2);
 					if(pointerPosition.x < 0) pointerPosition.x = 0;
@@ -66,11 +64,9 @@ var MONALISA_STATE = (function()
 		{
 			playerPointer.x = pointerPosition.x;
 			playerPointer.y = pointerPosition.y;
-			//fakeImageMask.x = pointerPosition.x;
-			//fakeImageMask.y = pointerPosition.y;
-			fakeImageMask.drawCircle(playerPointer.x, playerPointer.y, 50);
+			fakeImageMask.drawCircle(playerPointer.x, playerPointer.y, 40);
 			fakeImageMask.update();
-			fakeImage.mask = fakeImageMask;
+			//fakeImage.mask = fakeImageMask;
 		},
 		
 		render: function()
