@@ -55,6 +55,7 @@ var SHEEP_STATE = (function()
 				var tmpSheep = GAME.add.sprite(GAME.world.randomX, GAME.world.randomY);
 				GAME.physics.box2d.enable(tmpSheep);
 				tmpSheep.body.setCircle(30);
+				sheep.push(tmpSheep);
 			}
 			//
 			
